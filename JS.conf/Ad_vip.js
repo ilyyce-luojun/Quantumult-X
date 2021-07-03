@@ -25,10 +25,10 @@ hostname=account.wps.cn,account.wps.*,book.haitunwallet.com,api.shayujizhang.com
 ^https?:\/\/app-api\.smzdm\.com\/util\/loading url reject-dict
 
 # 酷我音乐SVIP (By yxiaocai)
-^https?:\/\/vip1\.kuwo\.cn\/(vip\/v2\/user\/vip|vip\/spi/mservice) url script-response-body https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Kuwo.js
+^https?:\/\/vip1\.kuwo\.cn\/(vip\/v2\/user\/vip|vip\/spi/mservice) url script-response-body https://raw.githubusercontent.com/ilyyce-luojun/Quantumult-X-1/main/JS.conf/Kuwo.js
 ^https?:\/\/musicpay\.kuwo\.cn\/music\.pay\?uid\=\d+ url 302 http://musicpay.kuwo.cn/music.pay?uid=1
 #酷我换肤(已经有的皮肤需要先从本地皮肤删除再换)
-^https?:\/\/vip1\.kuwo\.cn\/(vip\/v2\/theme)  url script-response-body   https://raw.githubusercontent.com/nzw9314/QuantumultX/master/Script/themekuwo.js
+^https?:\/\/vip1\.kuwo\.cn\/(vip\/v2\/theme)  url script-response-body   https://raw.githubusercontent.com/ilyyce-luojun/Quantumult-X-1/main/JS.conf/themekuwo.js
 
 # 抖音去广告去水印
 ^https?:\/\/.*\.amemv\.com\/aweme\/v2\/(follow\/)?feed\/ url request-header ^GET \/aweme\/v\d\/(follow\/)?feed\/(.+\r\n) request-header GET /aweme/v1/$1feed/$2 
