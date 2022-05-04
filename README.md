@@ -1,1 +1,1 @@
-#第一次拷贝 Quantumult-X
+QX脚本都是拷贝合成
