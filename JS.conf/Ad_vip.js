@@ -1,6 +1,10 @@
-hostname=*.bilibili.com,api.live.bilibili.com,api.vc.bilibili.com,account.wps.*,book.haitunwallet.com,api.shayujizhang.com,musicpay.kuwo.cn,vip1.kuwo.cn,*.my10api.com,*.woailuojingdong.com,*.dayuxiangqian.com,homepage-api.smzdm.com,haojia-api.smzdm.com,article-api.smzdm.com,haojia.m.smzdm.com,app-api.smzdm.com,s-api.smzdm.com,api1000.gdqeb.club,api.weibo.cn, mapi.weibo.com, *.uve.weibo.com, -*.weibo.com, mp.weixin.qq.com, security.wechat.com, weixin110.qq.com,duckduckgo.com, testflight.apple.com, boxer.baidu.com, pan.baidu.com,*.chuniao.*
-# WPS -(account.wps.*)
-^https://account.wps.*/api/users/ url script-response-body https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Wps.js
+hostname=*.bilibili.com,api.live.bilibili.com,api.vc.bilibili.com,rich.kuwo.cn, *.kwcdn.kuwo.cn, mobilead.kuwo.cn, musicpay.kuwo.cn, vip1.kuwo.cn, audiobookpay.kuwo.cn, tingshu.kuwo.cn, omp-audiobookpay.lrts.me, *kuwo*,*.docer.wps.cn, vipapi.wps.cn, account.wps.cn, account.wps.cn, *account.wps.com,book.haitunwallet.com,api.shayujizhang.com,musicpay.kuwo.cn,vip1.kuwo.cn,*.my10api.com,*.woailuojingdong.com,*.dayuxiangqian.com,homepage-api.smzdm.com,haojia-api.smzdm.com,article-api.smzdm.com,haojia.m.smzdm.com,app-api.smzdm.com,s-api.smzdm.com,api1000.gdqeb.club,api.weibo.cn, mapi.weibo.com, *.uve.weibo.com, -*.weibo.com, mp.weixin.qq.com, security.wechat.com, weixin110.qq.com,duckduckgo.com, testflight.apple.com, boxer.baidu.com, pan.baidu.com,*.chuniao.*
+
+ # > WPS解锁稻壳会员
+^https?:\/\/account\.wps\.cn\/api\/v3\/mine\/vips url script-response-body https://raw.githubusercontent.com/yqc007/QuantumultX/master/WPSDocerVIPuserCrack.js
+^https?:\/\/.+\.(docer.)?wps.cn\/(user\/v1\/vip|android\/mb\/buy|download\/v1\/ios|partner\/invoke\/usable|(api|rank)\/v1(\/mobile\/mb)?\/detail) url script-request-header https://raw.githubusercontent.com/yqc007/QuantumultX/master/WPSDocerVIPowerCrack.js
+
+^https?:\/\/.*?account\.wps\.(com|cn)(:\d+)?\/api\/users\/\w+\/overview$ url script-response-body https://raw.githubusercontent.com/I-am-R-E/Functional-Store-Hub/Master/WPSOffice/Script/WPS.js
 
 # 哔哩哔哩(*.bilibili.com,api.live.bilibili.com,api.vc.bilibili.com)
 # 去除动态中的话题
@@ -33,9 +37,33 @@ https:\/\/book\.haitunwallet\.com\/app\/vip\/status url script-response-body htt
 #鲨鱼记账 需要登录 解锁会员记账权限 -(api.shayujizhang.com)
 https://api.shayujizhang.com/account/detail/info/ url script-response-body https://raw.githubusercontent.com/zalmanwen/oooooo/master/xxx/xxxx/CNSPCrack.js
 
-#酷我音乐vip-（musicpay.kuwo.cn,vip1.kuwo.cn）
-^https?:\/\/musicpay\.kuwo\.cn\/music\.pay\?uid\=\d+ url 302 http://musicpay.kuwo.cn/music.pay?uid=2
-^https?:\/\/vip1\.kuwo\.cn\/(vip\/v2\/user\/vip|vip\/spi/mservice) url script-response-body https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/kuwo.js
+# 酷我音乐    rich.kuwo.cn, *.kwcdn.kuwo.cn, mobilead.kuwo.cn, musicpay.kuwo.cn, vip1.kuwo.cn, audiobookpay.kuwo.cn, tingshu.kuwo.cn, omp-audiobookpay.lrts.me
+
+# 酷我去广告
+^https?:\/\/rich\.kuwo\.cn\/AdService\/kaiping\/.+ url reject
+^https?:\/\/.+\.kwcdn\.kuwo\.cn\/star\/upload\/.+ url reject
+^https?:\/\/mobilead\.kuwo\.cn\/EcomResourceServer\/Ad url reject
+
+#  酷我听书
+https?:\/\/audiobookpay\.kuwo\.cn/a\.p\?op=get_advertright url reject-dict
+https?:\/\/omp-audiobookpay\.lrts\.me\/a\.p\?op=get_advertright url reject-dict
+https?:\/\/omp-audiobookpay\.lrts\.me\/a\.p$ url script-response-body https://qxnav.com/rules/QuantumultX/js/backup/js/kwyy.js
+^https?:\/\/audiobookpay\.kuwo\.cn/a\.p url script-response-body https://qxnav.com/rules/QuantumultX/js/backup/js/kwyy.js
+https://tingshu.kuwo.cn/v2/api/user/info url script-response-body https://qxnav.com/rules/QuantumultX/js/backup/js/kwyy.js
+https?:\/\/audiobooks\.kuwo\.cn\/v2\/api\/user\/info url script-response-body https://qxnav.com/rules/QuantumultX/js/backup/js/kwyy.js
+https?:\/\/tingshu\.kuwo\.cn\/v2\/api\/pay\/vip\/extraVipStatus url script-response-body https://qxnav.com/rules/QuantumultX/js/backup/js/kwyy.js
+
+#  酷我音乐_解锁Vip皮肤设置
+^https?:\/\/vip1\.kuwo\.cn\/vip\/v2\/theme  url script-response-body https://qxnav.com/rules/QuantumultX/js/backup/js/kwyy.js
+#  酷我音乐_解锁无损下载（先选听无损，再下载无损）
+^https?:\/\/musicpay\.kuwo\.cn\/music\.pay\?newver=\d$ url script-request-body https://qxnav.com/rules/QuantumultX/js/backup/js/kuwodl.js
+#  酷我音乐_解锁会员
+^https?:\/\/vip1\.kuwo\.cn\/(vip\/v2\/user\/vip|vip\/spi/mservice) url script-response-body https://qxnav.com/rules/QuantumultX/js/backup/js/kwyy.js
+#  酷我音乐_解锁NEW会员
+^https?:\/\/vip1\.kuwo\.cn\/vip\/enc\/user\/ url script-request-header https://qxnav.com/rules/QuantumultX/js/backup/js/kuwovip.js
+#  *kuwo*,*lrts*
+^https?:\/\/.*(kuwo|lrts).*(music\.pay\?ne|\/a\.p|v\d\/api\/(user\/in|pay\/vi)|\w{3}\/v\d\/user\/vi|\w{3}\/spi\/ms|\w{3}\/v\d\/the|\w{3}\/enc\/use) url script-response-body https://qxnav.com/rules/QuantumultX/js/backup/js/kwyy.js
+^https?:\/\/.*(kuwo|lrts).*(music\.pay\?ui) url script-request-header https://qxnav.com/rules/QuantumultX/js/backup/js/kwyy.js
 
 # 什么值得买去广告-(homepage-api.smzdm.com,haojia-api.smzdm.com,article-api.smzdm.com,haojia.m.smzdm.com,app-api.smzdm.com,s-api.smzdm.com)
 # 详情页去广告
